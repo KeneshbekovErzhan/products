@@ -15,7 +15,7 @@ public class App {
                     |       Menu      |
                     | (1) Products    |
                     | (2) Orders      |                   
-                    | (3) Customers   |
+                    | (3) Customers ---  |
                     | (4) Quit        |
  
                      """);
