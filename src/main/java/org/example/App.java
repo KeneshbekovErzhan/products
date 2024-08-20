@@ -15,7 +15,7 @@ public class App {
                     |       Menu      |
                     | (1) Products    |
                     | (2) Orders      |                   
-                    | (3) Customers ---  |
+                    | (3) Customers   |
                     | (4) Quit        |
  
                      """);
@@ -30,6 +30,8 @@ public class App {
                     break;
                 case 3:
                     customers();
+                    break;
+                case 4:
                     break;
             }
         }
@@ -93,19 +95,19 @@ public class App {
             int choose = scanner.nextInt();
             switch (choose) {
                 case 1:
-                    orderService.saveOrder();
+                    orderService.createOrder();
                     break;
                 case 2:
-                    orderService.getById();
+                    orderService.getOrderById();
                     break;
                 case 3:
                     orderService.updateOrder();
                     break;
                 case 4:
-                    orderService.deleteOrderById();
+                    orderService.deleteOrder();
                     break;
                 case 5:
-                    System.out.println("V dorabotke )");
+                    orderService.getAll();
                     break;
                 case 6:
                     check = false;
@@ -136,16 +138,16 @@ public class App {
                     productService.saveProduct();
                     break;
                 case 2:
-                    productService.get_ById();
+                    productService.getById();
                     break;
                 case 3:
                     productService.updateProduct();
                     break;
                 case 4:
-                    productService.deleteProduct();
+                    productService.deleteProductById();
                     break;
                 case 5:
-                    System.out.println("V dorabotke )");
+                    productService.getAllProducts();
                     break;
                 case 6:
                     check = false;
