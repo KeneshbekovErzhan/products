@@ -1,5 +1,7 @@
 package org.example.utils;
 
+import org.springframework.stereotype.Component;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,7 +18,8 @@ public class DbConnector {
     public DbConnector(){
         if(connection == null){
             try {
-                connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?user=postgres&password=Admin");
+                connection = DriverManager
+                        .getConnection("jdbc:postgresql://localhost:5432/postgres?user=postgres&password=Admin");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

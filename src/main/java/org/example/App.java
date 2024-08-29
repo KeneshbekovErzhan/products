@@ -1,13 +1,16 @@
 package org.example;
+import org.example.config.ProjectConfig;
 import org.example.service.CustomerService;
 import org.example.service.OrderService;
 import org.example.service.ProductService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Scanner;
 
 public class App {
     static Scanner scanner = new Scanner(System.in);
-
+    static AnnotationConfigApplicationContext context =
+            new AnnotationConfigApplicationContext(ProjectConfig.class);
     public static void main(String[] args) {
         boolean check = true;
         while (check) {
@@ -40,7 +43,7 @@ public class App {
     private static void customers() {
         boolean check = true;
         while (check) {
-            CustomerService customerService = new CustomerService();
+            CustomerService customerService = context.getBean(CustomerService.class);
             System.out.println("""
                     |   Menu cutomers  |
                     | (1) Create       |
@@ -80,7 +83,7 @@ public class App {
     private static void orders() {
         boolean check = true;
         while (check) {
-        OrderService orderService = new OrderService();
+        OrderService orderService = context.getBean(OrderService.class);
         System.out.println("""
                     |   Menu orders    |
                     | (1) Create       |
@@ -120,7 +123,7 @@ public class App {
     private static void products() {
         boolean check = true;
         while (check) {
-            ProductService productService = new ProductService();
+            ProductService productService = context.getBean(ProductService.class);
             System.out.println("""
                     |   Menu products  |
                     | (1) Create       |

@@ -8,17 +8,23 @@ import org.example.models.Order;
 import org.example.models.Product;
 
 import org.example.utils.Printable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@Component
 public class OrderService {
-    OrderDao orderDao = new OrderDao();
+    @Autowired
+    private OrderDao orderDao;
     Scanner sc = new Scanner(System.in);
-    CustomerDao customerDao = new CustomerDao();
-    ProductDao productDao = new ProductDao();
+    @Autowired
+    private CustomerDao customerDao;
+    @Autowired
+    private ProductDao productDao;
 
     Printable<Order> printable = order -> {
         System.out.println("----------------------------");
