@@ -7,7 +7,6 @@ import com.example.products_boot.product_boot.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,6 +21,8 @@ public class OrderService {
     ProductRepository productRepository;
     @Autowired
     OrderSave orderSave;
+    @Autowired
+    CustomerDao customerDao;
 
     Printable<Order> printable = order -> {
         System.out.println("----------------------------");
@@ -45,14 +46,18 @@ public class OrderService {
     public void createOrder(OrderSave orderSave){
         Order order = new Order();
         order.setOrderStatus(orderSave.getOrderStatus());
-        order.setDate(orderSave.getDate());
 
-        //GovnoKod
-
-        List<Product> productList = new ArrayList<>();
-        productList = addArrayList(productList);
-        order.setProductList(productList);
+        Customer customer = customerDao.getById(1); //Poka tak, nado ispravit
+        order.setCustomer(customer);
+        setDate(order);
         orderRepository.save(order);
+
+
+
+       // List<Product> productList = new ArrayList<>();
+       // productList = addArrayList(productList);
+       // order.setProductList(productList);
+       // orderRepository.save(order);
     }
 
     public void getOrderById(){
